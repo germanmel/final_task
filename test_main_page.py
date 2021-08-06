@@ -13,27 +13,6 @@ def test_guest_should_see_login_link(browser):
     page.open()
     page.should_be_login_link()
 
-def should_be_login_page(browser):
-    page = LoginPage(browser,login_link)
-    page.open()
-    page.should_be_login_page()
-
-
-def test_login_url_is_correct(browser):
-    page = LoginPage(browser,login_link)
-    page.open()
-    page.should_be_login_url()
-
-def test_guest_should_see_login_form(browser):
-    page = LoginPage(browser,login_link)
-    page.open()
-    page.should_be_login_form()
-
-def test_guest_should_be_register_form(browser):
-    page = LoginPage(browser,login_link)
-    page.open()
-    page.should_be_register_form()
-
 
     
 
