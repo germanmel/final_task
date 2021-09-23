@@ -1,8 +1,13 @@
+import pytest
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
 from .locators import ProductPageLocators
 
-product_link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+#product_link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+
+base_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer" #базовая ссылка 
+urls = [f"{base_url}{promo_number}" for promo_number in range(10)] #создаём список url меняя последюю цифру циклом
+urls[7] = pytest.param(urls[7], marks=pytest.mark.xfail) #маркируем url седьмой ссылки как xfail
 
 class ProductPage(BasePage):
 
@@ -29,8 +34,8 @@ class ProductPage(BasePage):
         product_name_cart = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_CART)
         product_name_cart = product_name_cart.text
         print(alert_name, product_name, product_name_cart)
-        assert product_name in alert_name, "Name of book on product page differs from name in alert"
-        assert product_name_cart in alert_name, "Name of book in cart differs from name in alert"
+        assert product_name == alert_name, "Name of book on product page differs from name in alert"
+        assert product_name_cart == alert_name, "Name of book in cart differs from name in alert"
 
     def check_price(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_CART)
