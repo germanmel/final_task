@@ -1,6 +1,7 @@
 from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage #login_link
 from .pages.main_page import MainPage, link
+import pytest
 
 def test_guest_can_go_to_login_page(browser):
     page = MainPage(browser, link) # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url
