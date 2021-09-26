@@ -1,4 +1,4 @@
-from .pages.login_page import LoginPage, login_link
+from .pages.login_page import LoginPage #login_link
 from .pages.main_page import MainPage, link
 
 def test_guest_can_go_to_login_page(browser):

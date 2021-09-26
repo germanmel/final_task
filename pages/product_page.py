@@ -5,14 +5,14 @@ from .locators import ProductPageLocators
 
 #product_link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
 
-base_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer" #базовая ссылка 
-urls = [f"{base_url}{promo_number}" for promo_number in range(10)] #создаём список url меняя последюю цифру циклом
-urls[7] = pytest.param(urls[7], marks=pytest.mark.xfail) #маркируем url седьмой ссылки как xfail
+base_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1" #базовая ссылка 
+urls = [f"{base_url}{promo_number}" for promo_number in range(1)] #создаём список url меняя последюю цифру циклом
+#urls[7] = pytest.param(urls[7], marks=pytest.mark.xfail) #маркируем url седьмой ссылки как xfail
 
 class ProductPage(BasePage):
-
+    
     def should_be_alert_added_to_cart(self):
-        assert self.is_element_present(*ProductPageLocators.ALERT_ADDED_TO_CART), "Alert added to cart not found"
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_ALERT_ADDED_TO_CART), "Alert added to cart not found"
 
     def should_be_alert_cart_cost(self):
         assert self.is_element_present(*ProductPageLocators.ALERT_PRICE), "Alert with cart cost not found"
@@ -26,7 +26,7 @@ class ProductPage(BasePage):
         button.click()
 
     def check_name_of_book(self):
-        alert_name = self.browser.find_element(*ProductPageLocators.ALERT_ADDED_TO_CART)
+        alert_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_ALERT_ADDED_TO_CART)
         alert_name = alert_name.text
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
         product_name = product_name.text
@@ -45,7 +45,13 @@ class ProductPage(BasePage):
         print(product_price, cart_cost)
         assert product_price == cart_cost, "Cart cost isn't equal product price"
 
-       
+    def should_not_be_success_message(self): #тест упадёт как только увидит искомый элемент
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def success_message_should_be_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not disappeared"
 
     
 
