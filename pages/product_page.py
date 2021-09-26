@@ -3,7 +3,7 @@ from .base_page import BasePage
 from selenium.webdriver.common.by import By
 from .locators import ProductPageLocators
 
-#product_link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+product_link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 
 base_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1" #базовая ссылка 
 urls = [f"{base_url}{promo_number}" for promo_number in range(1)] #создаём список url меняя последюю цифру циклом
@@ -19,10 +19,6 @@ class ProductPage(BasePage):
 
     def push_add_to_cart(self):
         button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
-        button.click()
-
-    def show_cart_page(self):
-        button = self.browser.find_element(*ProductPageLocators.SHOW_CART_BUTTON)
         button.click()
 
     def check_name_of_book(self):
