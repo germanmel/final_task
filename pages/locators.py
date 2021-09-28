@@ -4,6 +4,7 @@ class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     SHOW_CART_BUTTON = (By.CSS_SELECTOR, ".btn-group")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user") 
 
 class MainPageLocators():
     pass
@@ -11,6 +12,10 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTRATION_FORM = (By.CSS_SELECTOR, "#register_form")
+    EMAIL_FIELD = (By.CSS_SELECTOR, "#id_registration-email")
+    PASSWORD_FIELD = (By.CSS_SELECTOR, "#id_registration-password1.form-control")
+    REPEAT_PASSWORD_FIELD = (By.CSS_SELECTOR, "#id_registration-password2.form-control")
+    REGISTRATION_BUTTON = (By.CSS_SELECTOR, ".btn[value=Register]")
 
 class ProductPageLocators():
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
