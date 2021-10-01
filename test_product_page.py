@@ -3,11 +3,11 @@ from .pages.login_page import LoginPage
 from .pages.product_page import ProductPage, urls, base_url, product_link
 from .pages.locators import ProductPageLocators
 from .pages.basket_page import BasketPage
-import time, pytest
+import pytest
 from faker import Faker
 
 
-#@pytest.mark.parametrize('link', urls)
+@pytest.mark.need_review
 def test_guest_can_add_product_to_basket(browser):
     page = ProductPage(browser, base_url)
     page.open()
@@ -45,11 +45,13 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.open()
     page.should_be_login_link()
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, product_link)
     page.open()
     page.go_to_login_page()
-
+    
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = ProductPage(browser, product_link)
     page.open()
@@ -71,6 +73,7 @@ class TestUserAddToBasketFromProductPage():
         log_page.register_new_user(email, password)
         page.should_be_authorized_user()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, base_url)
         page.open()
