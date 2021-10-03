@@ -4,6 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from .locators import BasePageLocators, LoginPageLocators, ProductPageLocators
 import pytest
 
+login_link = "http://selenium1py.pythonanywhere.com/accounts/login/"
+
 class LoginPage(BasePage):
     
     def should_be_login_page(self):

@@ -1,5 +1,5 @@
 from .pages.base_page import BasePage
-from .pages.login_page import LoginPage
+from .pages.login_page import LoginPage, login_link
 from .pages.product_page import ProductPage, urls, base_url, product_link
 from .pages.locators import ProductPageLocators
 from .pages.basket_page import BasketPage
@@ -68,11 +68,10 @@ class TestUserAddToBasketFromProductPage():
         fake = Faker()
         email = fake.email()
         password = fake.password()
-        page = ProductPage(browser, base_url)
-        page.open()
-        log_page = LoginPage(browser, browser.current_url)
+        log_page = LoginPage(browser, login_link)
+        log_page.open()
         log_page.register_new_user(email, password)
-        page.should_be_authorized_user()
+        log_page.should_be_authorized_user()
 
     @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
