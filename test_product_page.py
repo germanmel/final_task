@@ -1,6 +1,6 @@
 from .pages.base_page import BasePage
 from .pages.login_page import LoginPage
-from .pages.product_page import ProductPage, urls, base_url, product_link
+from .pages.product_page import ProductPage, base_url, product_link
 from .pages.locators import ProductPageLocators
 from .pages.basket_page import BasketPage
 import pytest
