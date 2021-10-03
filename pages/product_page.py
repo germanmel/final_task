@@ -4,10 +4,9 @@ from selenium.webdriver.common.by import By
 from .locators import ProductPageLocators
 
 product_link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
-
-base_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1" #базовая ссылка 
-urls = [f"{base_url}{promo_number}" for promo_number in range(1)] #создаём список url меняя последюю цифру циклом
-#urls[7] = pytest.param(urls[7], marks=pytest.mark.xfail) #маркируем url седьмой ссылки как xfail
+base_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer" #базовая ссылка 
+urls = [f"{base_url}{promo_number}" for promo_number in range(10)] #создаём список url меняя последюю цифру циклом
+urls[7] = pytest.param(urls[7], marks=pytest.mark.xfail) #маркируем url седьмой ссылки как xfail
 
 class ProductPage(BasePage):
     
